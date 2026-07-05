@@ -83,11 +83,18 @@ a {
   padding: clamp(2.75rem, 9vw, 7rem) 1rem clamp(2.75rem, 8vw, 6rem);
 }
 
+/* Sparkles frame the logo rather than filling the whole header:
+   sized a touch larger than the logo and centered on it. */
 .site-header__sparkles {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(260px, 70vw, 52rem);
+  aspect-ratio: 2756 / 1295;
   background-image: url("assets/header-sparkles.gif");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
 }
