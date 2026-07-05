@@ -87,10 +87,10 @@ a {
    sized a touch larger than the logo and centered on it. */
 .site-header__sparkles {
   position: absolute;
-  top: 50%;
+  top: 325px;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(320px, 88vw, 64rem);
+  width: clamp(320px, 88vw, 70rem);
   aspect-ratio: 2756 / 1295;
   background-image: url("assets/header-sparkles.gif");
   background-size: contain;
