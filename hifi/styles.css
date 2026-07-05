@@ -90,7 +90,7 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(260px, 70vw, 52rem);
+  width: clamp(320px, 88vw, 64rem);
   aspect-ratio: 2756 / 1295;
   background-image: url("assets/header-sparkles.gif");
   background-size: contain;
