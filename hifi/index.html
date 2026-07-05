@@ -18,30 +18,23 @@
     <header class="site-header" id="top">
       <div class="site-header__sparkles" aria-hidden="true"></div>
 
-      <img
-        class="site-header__ostrich"
-        src="assets/ostrich-blinking.gif"
-        alt="HiFi Arts Co. ostrich mascot"
-      />
-
-      <!-- Just-for-fun speech bubble, revealed when the magnifier is clicked -->
-      <div class="quote" id="quote" hidden>
+      <div class="header-bar">
         <img
-          id="quoteImg"
-          src="assets/quote-scrolling.gif"
-          alt="I don't really do anything. I'm just here lookin' cute."
+          class="header-bar__ostrich"
+          src="assets/ostrich-blinking.gif"
+          alt="HiFi Arts Co. ostrich mascot"
         />
+
+        <img
+          class="header-bar__logo"
+          src="assets/logo.png"
+          alt="HiFi Arts Co."
+        />
+
+        <button class="magnifier" id="magnifierBtn" type="button" aria-label="Search">
+          <img src="assets/magnifying-glass.gif" alt="" aria-hidden="true" />
+        </button>
       </div>
-
-      <img
-        class="site-header__logo"
-        src="assets/logo.png"
-        alt="HiFi Arts Co."
-      />
-
-      <button class="magnifier" id="magnifierBtn" type="button" aria-label="Search">
-        <img src="assets/magnifying-glass.gif" alt="" aria-hidden="true" />
-      </button>
 
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list">
@@ -51,6 +44,15 @@
           <li><a href="#mailing">Mailing List</a></li>
         </ul>
       </nav>
+
+      <!-- Just-for-fun speech bubble, revealed when the magnifier is clicked -->
+      <div class="quote" id="quote" hidden>
+        <img
+          id="quoteImg"
+          src="assets/quote-scrolling.gif"
+          alt="I don't really do anything. I'm just here lookin' cute."
+        />
+      </div>
     </header>
 
     <!-- Wave divider: teal -> yellow ribbon -> white (all CSS/SVG) -->

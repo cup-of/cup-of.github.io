@@ -9,6 +9,7 @@ if (cursor) {
   let idleTimer;
 
   document.addEventListener("mousemove", (event) => {
+    cursor.style.opacity = "1";
     cursor.style.left = `${event.clientX}px`;
     cursor.style.top = `${event.clientY}px`;
 
