@@ -4,8 +4,8 @@
 const cursor = document.getElementById("frogCursor");
 
 if (cursor) {
-  const IDLE_GIF = "assets/cursor-stationary.gif";
-  const MOVE_GIF = "assets/cursor-left.gif";
+  const IDLE_GIF = 'url("assets/cursor-stationary.gif")';
+  const MOVE_GIF = 'url("assets/cursor-left.gif")';
   let idleTimer;
 
   document.addEventListener("mousemove", (event) => {
@@ -19,13 +19,39 @@ if (cursor) {
       cursor.style.transform = "translate(-50%, -50%) scaleX(1)";
     }
 
-    if (cursor.style.backgroundImage !== `url("${MOVE_GIF}")`) {
-      cursor.style.backgroundImage = `url("${MOVE_GIF}")`;
+    if (cursor.style.backgroundImage !== MOVE_GIF) {
+      cursor.style.backgroundImage = MOVE_GIF;
     }
 
     clearTimeout(idleTimer);
     idleTimer = setTimeout(() => {
-      cursor.style.backgroundImage = `url("${IDLE_GIF}")`;
+      cursor.style.backgroundImage = IDLE_GIF;
     }, 150);
   });
+}
+
+// ============ Magnifier speech bubble (just for fun) ============
+// Clicking the magnifier toggles the ostrich's speech bubble. Re-setting the
+// gif src with a cache-busting query restarts its scroll-in animation.
+const magnifier = document.getElementById("magnifierBtn");
+const quote = document.getElementById("quote");
+const quoteImg = document.getElementById("quoteImg");
+
+if (magnifier && quote && quoteImg) {
+  const QUOTE_GIF = "assets/quote-scrolling.gif";
+
+  magnifier.addEventListener("click", () => {
+    if (!quote.hidden) {
+      quote.hidden = true;
+      return;
+    }
+    quote.hidden = false;
+    quoteImg.src = `${QUOTE_GIF}?t=${Date.now()}`;
+  });
+}
+
+// ============ Footer year ============
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
 }

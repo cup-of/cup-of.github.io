@@ -1,17 +1,12 @@
 /* ============ Design tokens ============ */
 :root {
-  --teal: #5fc4b0;
-  --yellow: #f4c24e;
-  --salmon: #e9a18d;
-  --cream: #eae0d0;
+  --teal: #63c9bc;
+  --yellow: #f9cf4d;
+  --salmon: #f2a999;
+  --cream: #f7efe2;
   --brown: #4a3728;
 
   --content-max: 60rem;
-
-  /* header.png native ratio 2756 x 1295 */
-  --header-ratio: 2756 / 1295;
-  /* footer.png native ratio 2756 x 853 */
-  --footer-ratio: 2756 / 853;
 }
 
 /* ============ Base ============ */
@@ -69,10 +64,10 @@ a {
 /* ============ Header ============ */
 .site-header {
   position: relative;
-  aspect-ratio: var(--header-ratio);
-  background-image: url("assets/header.png");
-  background-size: cover;
-  background-position: center;
+  background: var(--teal);
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(1rem, 2.5vw, 1.75rem);
+  text-align: center;
 }
 
 .site-header__sparkles {
@@ -84,40 +79,58 @@ a {
   pointer-events: none;
 }
 
+.site-header__logo {
+  width: min(55%, 34rem);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
 .site-header__ostrich {
   position: absolute;
-  top: -2%;
-  left: 1%;
-  width: 18%;
+  top: -0.5rem;
+  left: 2%;
+  width: clamp(90px, 13%, 210px);
   height: auto;
+  z-index: 3;
 }
 
-.site-header__quote {
+/* Magnifier — styled to read as a clickable button */
+.magnifier {
   position: absolute;
   top: 6%;
-  left: 18%;
-  width: 22%;
-  aspect-ratio: 2697 / 1268;
-  background-image: url("assets/quote-stationary.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
+  right: 4%;
+  width: clamp(64px, 9vw, 128px);
+  padding: 0;
+  border: 0;
+  background: none;
+  z-index: 4;
+  transition: transform 0.15s ease;
 }
 
-.site-header__magnifier {
+.magnifier:hover {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.magnifier:active {
+  transform: scale(0.94);
+}
+
+/* Speech bubble */
+.quote {
   position: absolute;
-  top: 4%;
-  right: 4%;
-  width: 12%;
-  height: auto;
+  top: 1%;
+  left: 15%;
+  width: clamp(190px, 26%, 360px);
+  z-index: 5;
+  pointer-events: none;
 }
 
 /* ============ Nav ============ */
 .nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* sit on the teal, just above the wave baked into header.png */
-  bottom: 16%;
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(1rem, 3vw, 2rem);
 }
 
 .nav__list {
@@ -133,11 +146,43 @@ a {
 .nav__list a {
   color: #fff;
   font-weight: 600;
-  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .nav__list a:hover {
   text-decoration: underline;
+}
+
+/* ============ Wave dividers ============ */
+.wave {
+  line-height: 0;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: clamp(48px, 7vw, 92px);
+}
+
+.wave--header {
+  background: #fff;
+}
+
+.wave--header .wave-teal {
+  fill: var(--teal);
+}
+
+.wave--header .wave-yellow {
+  fill: var(--yellow);
+}
+
+.wave--footer {
+  background: #fff;
+}
+
+.wave--footer .wave-pink {
+  fill: var(--salmon);
 }
 
 /* ============ Content ============ */
@@ -177,7 +222,28 @@ a {
 }
 
 /* ============ Footer ============ */
-.site-footer__img {
-  width: 100%;
-  height: auto;
+.site-footer {
+  background: var(--salmon);
+  color: var(--cream);
+  text-align: center;
+  padding: 0.5rem 1rem 3rem;
+}
+
+.site-footer__name {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+}
+
+.site-footer__address {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 1rem;
+}
+
+.site-footer__copy {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0;
 }

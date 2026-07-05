@@ -16,7 +16,6 @@
 
     <!-- ============ HEADER ============ -->
     <header class="site-header" id="top">
-      <!-- header.png contains the teal bg, the HiFi Arts Co. logo, and the wave -->
       <div class="site-header__sparkles" aria-hidden="true"></div>
 
       <img
@@ -25,16 +24,25 @@
         alt="HiFi Arts Co. ostrich mascot"
       />
 
-      <div class="site-header__quote" aria-hidden="true"></div>
+      <!-- Just-for-fun speech bubble, revealed when the magnifier is clicked -->
+      <div class="quote" id="quote" hidden>
+        <img
+          id="quoteImg"
+          src="assets/quote-scrolling.gif"
+          alt="I don't really do anything. I'm just here lookin' cute."
+        />
+      </div>
 
       <img
-        class="site-header__magnifier"
-        src="assets/magnifying-glass.gif"
-        alt=""
-        aria-hidden="true"
+        class="site-header__logo"
+        src="assets/logo.png"
+        alt="HiFi Arts Co."
       />
 
-      <!-- ============ NAV ============ -->
+      <button class="magnifier" id="magnifierBtn" type="button" aria-label="Search">
+        <img src="assets/magnifying-glass.gif" alt="" aria-hidden="true" />
+      </button>
+
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list">
           <li><a href="#about">About Us</a></li>
@@ -44,6 +52,14 @@
         </ul>
       </nav>
     </header>
+
+    <!-- Wave divider: teal -> yellow ribbon -> white (all CSS/SVG) -->
+    <div class="wave wave--header" aria-hidden="true">
+      <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+        <path class="wave-teal" d="M0,0 L1440,0 L1440,55.0 L1440.0,55.0 L1416.0,50.8 L1392.0,46.9 L1368.0,43.2 L1344.0,40.1 L1320.0,37.7 L1296.0,36.0 L1272.0,35.1 L1248.0,35.1 L1224.0,36.0 L1200.0,37.7 L1176.0,40.1 L1152.0,43.2 L1128.0,46.9 L1104.0,50.8 L1080.0,55.0 L1056.0,59.2 L1032.0,63.1 L1008.0,66.8 L984.0,69.9 L960.0,72.3 L936.0,74.0 L912.0,74.9 L888.0,74.9 L864.0,74.0 L840.0,72.3 L816.0,69.9 L792.0,66.8 L768.0,63.1 L744.0,59.2 L720.0,55.0 L696.0,50.8 L672.0,46.9 L648.0,43.2 L624.0,40.1 L600.0,37.7 L576.0,36.0 L552.0,35.1 L528.0,35.1 L504.0,36.0 L480.0,37.7 L456.0,40.1 L432.0,43.2 L408.0,46.9 L384.0,50.8 L360.0,55.0 L336.0,59.2 L312.0,63.1 L288.0,66.8 L264.0,69.9 L240.0,72.3 L216.0,74.0 L192.0,74.9 L168.0,74.9 L144.0,74.0 L120.0,72.3 L96.0,69.9 L72.0,66.8 L48.0,63.1 L24.0,59.2 L0.0,55.0 Z" />
+        <path class="wave-yellow" d="M0.0,55.0 L24.0,59.2 L48.0,63.1 L72.0,66.8 L96.0,69.9 L120.0,72.3 L144.0,74.0 L168.0,74.9 L192.0,74.9 L216.0,74.0 L240.0,72.3 L264.0,69.9 L288.0,66.8 L312.0,63.1 L336.0,59.2 L360.0,55.0 L384.0,50.8 L408.0,46.9 L432.0,43.2 L456.0,40.1 L480.0,37.7 L504.0,36.0 L528.0,35.1 L552.0,35.1 L576.0,36.0 L600.0,37.7 L624.0,40.1 L648.0,43.2 L672.0,46.9 L696.0,50.8 L720.0,55.0 L744.0,59.2 L768.0,63.1 L792.0,66.8 L816.0,69.9 L840.0,72.3 L864.0,74.0 L888.0,74.9 L912.0,74.9 L936.0,74.0 L960.0,72.3 L984.0,69.9 L1008.0,66.8 L1032.0,63.1 L1056.0,59.2 L1080.0,55.0 L1104.0,50.8 L1128.0,46.9 L1152.0,43.2 L1176.0,40.1 L1200.0,37.7 L1224.0,36.0 L1248.0,35.1 L1272.0,35.1 L1296.0,36.0 L1320.0,37.7 L1344.0,40.1 L1368.0,43.2 L1392.0,46.9 L1416.0,50.8 L1440.0,55.0 L1440.0,81.0 L1416.0,76.8 L1392.0,72.9 L1368.0,69.2 L1344.0,66.1 L1320.0,63.7 L1296.0,62.0 L1272.0,61.1 L1248.0,61.1 L1224.0,62.0 L1200.0,63.7 L1176.0,66.1 L1152.0,69.2 L1128.0,72.9 L1104.0,76.8 L1080.0,81.0 L1056.0,85.2 L1032.0,89.1 L1008.0,92.8 L984.0,95.9 L960.0,98.3 L936.0,100.0 L912.0,100.9 L888.0,100.9 L864.0,100.0 L840.0,98.3 L816.0,95.9 L792.0,92.8 L768.0,89.1 L744.0,85.2 L720.0,81.0 L696.0,76.8 L672.0,72.9 L648.0,69.2 L624.0,66.1 L600.0,63.7 L576.0,62.0 L552.0,61.1 L528.0,61.1 L504.0,62.0 L480.0,63.7 L456.0,66.1 L432.0,69.2 L408.0,72.9 L384.0,76.8 L360.0,81.0 L336.0,85.2 L312.0,89.1 L288.0,92.8 L264.0,95.9 L240.0,98.3 L216.0,100.0 L192.0,100.9 L168.0,100.9 L144.0,100.0 L120.0,98.3 L96.0,95.9 L72.0,92.8 L48.0,89.1 L24.0,85.2 L0.0,81.0 Z" />
+      </svg>
+    </div>
 
     <!-- ============ CONTENT ============ -->
     <main class="content">
@@ -76,14 +92,21 @@
       </section>
     </main>
 
+    <!-- Wave divider: white -> pink footer (all CSS/SVG) -->
+    <div class="wave wave--footer" aria-hidden="true">
+      <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+        <path class="wave-pink" d="M0,110 L1440,110 L1440,50.0 L1440.0,50.0 L1416.0,54.6 L1392.0,58.9 L1368.0,62.9 L1344.0,66.3 L1320.0,69.1 L1296.0,70.9 L1272.0,71.9 L1248.0,71.9 L1224.0,70.9 L1200.0,69.1 L1176.0,66.3 L1152.0,62.9 L1128.0,58.9 L1104.0,54.6 L1080.0,50.0 L1056.0,45.4 L1032.0,41.1 L1008.0,37.1 L984.0,33.7 L960.0,30.9 L936.0,29.1 L912.0,28.1 L888.0,28.1 L864.0,29.1 L840.0,30.9 L816.0,33.7 L792.0,37.1 L768.0,41.1 L744.0,45.4 L720.0,50.0 L696.0,54.6 L672.0,58.9 L648.0,62.9 L624.0,66.3 L600.0,69.1 L576.0,70.9 L552.0,71.9 L528.0,71.9 L504.0,70.9 L480.0,69.1 L456.0,66.3 L432.0,62.9 L408.0,58.9 L384.0,54.6 L360.0,50.0 L336.0,45.4 L312.0,41.1 L288.0,37.1 L264.0,33.7 L240.0,30.9 L216.0,29.1 L192.0,28.1 L168.0,28.1 L144.0,29.1 L120.0,30.9 L96.0,33.7 L72.0,37.1 L48.0,41.1 L24.0,45.4 L0.0,50.0 Z" />
+      </svg>
+    </div>
+
     <!-- ============ FOOTER ============ -->
-    <!-- footer.png contains the wave, address, and copyright -->
     <footer class="site-footer">
-      <img
-        class="site-footer__img"
-        src="assets/footer.png"
-        alt="HiFi Arts Co. — 4586 Park Boulevard, San Diego, California 92116"
-      />
+      <p class="site-footer__name">HiFi Arts Co.</p>
+      <p class="site-footer__address">
+        4586 Park Boulevard<br />
+        San Diego, California 92116
+      </p>
+      <p class="site-footer__copy">&copy; <span id="year"></span> ZoshHifiartsco</p>
     </footer>
 
     <script src="script.js"></script>
