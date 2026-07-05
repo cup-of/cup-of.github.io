@@ -51,8 +51,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 56px;
-  height: 56px;
+  width: 96px;
+  height: 72px;
   background-image: url("assets/cursor-stationary.gif");
   background-size: contain;
   background-repeat: no-repeat;
@@ -64,7 +64,10 @@ a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body {
+  body,
+  a,
+  button,
+  .magnifier {
     cursor: none;
   }
 
@@ -77,8 +80,7 @@ a {
 .site-header {
   position: relative;
   background: var(--teal);
-  overflow: hidden;
-  padding: clamp(1.25rem, 3vw, 2.5rem) 1rem clamp(1rem, 2.5vw, 1.75rem);
+  padding: clamp(2.75rem, 9vw, 7rem) 1rem clamp(2.75rem, 8vw, 6rem);
 }
 
 .site-header__sparkles {
@@ -98,27 +100,32 @@ a {
   align-items: center;
   justify-content: center;
   gap: clamp(0.5rem, 3vw, 2.5rem);
-  max-width: 62rem;
+  max-width: 82rem;
   margin: 0 auto;
 }
 
 .header-bar__ostrich {
   flex: 0 0 auto;
-  width: clamp(56px, 12vw, 150px);
+  width: clamp(120px, 26vw, 340px);
   height: auto;
 }
 
 .header-bar__logo {
   flex: 0 1 auto;
   min-width: 0;
-  width: clamp(150px, 44vw, 30rem);
+  width: clamp(200px, 56vw, 42rem);
   max-width: 100%;
+}
+
+.magnifier-wrap {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
 }
 
 /* Magnifier — styled to read as a clickable button */
 .magnifier {
-  flex: 0 0 auto;
-  width: clamp(52px, 8vw, 104px);
+  width: clamp(110px, 19vw, 240px);
   padding: 0;
   border: 0;
   background: none;
@@ -133,39 +140,83 @@ a {
   transform: scale(0.94);
 }
 
-/* Speech bubble — floats near the magnifier when revealed */
+/* Speech bubble — sits directly above the magnifier when revealed.
+   Both gifs carry transparent padding, so the bubble is pulled down to
+   close the visual gap between the tail and the magnifier glass. */
 .quote {
   position: absolute;
-  top: clamp(3rem, 8vw, 5.5rem);
-  right: clamp(0.5rem, 5vw, 5rem);
-  width: clamp(180px, 28%, 330px);
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-68%, 38%);
+  width: clamp(200px, 24vw, 330px);
+  max-width: 70vw;
   z-index: 6;
   pointer-events: none;
 }
 
-/* ============ Nav ============ */
+/* ============ Nav band (yellow wavy strip) ============ */
+.nav-band {
+  position: relative;
+  background: var(--yellow);
+  padding: clamp(2.5rem, 6vw, 3.75rem) 1rem;
+}
+
+.nav-band__wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(22px, 3.5vw, 44px);
+  display: block;
+}
+
+.nav-band__wave--top {
+  top: 0;
+}
+
+.nav-band__wave--bottom {
+  bottom: 0;
+}
+
+.nav-band .wave-teal {
+  fill: var(--teal);
+}
+
+.nav-band .wave-white {
+  fill: #fff;
+}
+
 .nav {
   position: relative;
-  z-index: 2;
-  margin-top: clamp(1rem, 3vw, 1.75rem);
-  padding-inline: 1rem;
+  z-index: 1;
 }
 
 .nav__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6rem 1.5rem;
+  align-items: center;
+  gap: 0.3rem 0.7rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.nav__list li {
+  display: flex;
+  align-items: center;
+}
+
+.nav__list li:not(:last-child)::after {
+  content: "\00B7";
+  margin-left: 0.7rem;
+  color: var(--brown);
+  opacity: 0.65;
+}
+
 .nav__list a {
-  color: #fff;
-  font-weight: 600;
-  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  color: var(--brown);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.7vw, 1.15rem);
 }
 
 .nav__list a:hover {
@@ -181,10 +232,6 @@ a {
     width: clamp(140px, 52vw, 20rem);
   }
 
-  .nav__list {
-    gap: 0.4rem 1rem;
-  }
-
   .nav__list a {
     font-size: 0.85rem;
   }
@@ -198,19 +245,7 @@ a {
 .wave svg {
   display: block;
   width: 100%;
-  height: clamp(48px, 7vw, 92px);
-}
-
-.wave--header {
-  background: #fff;
-}
-
-.wave--header .wave-teal {
-  fill: var(--teal);
-}
-
-.wave--header .wave-yellow {
-  fill: var(--yellow);
+  height: clamp(60px, 9vw, 120px);
 }
 
 .wave--footer {
@@ -230,9 +265,9 @@ a {
 }
 
 .section {
-  padding-block: 4rem;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background-repeat: repeat;
+  background-size: clamp(220px, 26vw, 340px);
 }
 
 .section--about {
@@ -250,11 +285,24 @@ a {
 
 .section__title {
   font-size: clamp(1.5rem, 4vw, 2.25rem);
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem;
 }
 
 .section__body {
-  margin: 0;
+  max-width: 65ch;
+  margin: 0 0 1rem;
+  line-height: 1.7;
+}
+
+.section__body:last-child {
+  margin-bottom: 0;
+}
+
+.section__image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.75rem 0;
 }
 
 /* ============ Footer ============ */
@@ -262,7 +310,7 @@ a {
   background: var(--salmon);
   color: var(--cream);
   text-align: center;
-  padding: 0.5rem 1rem 3rem;
+  padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(3rem, 7vw, 5.5rem);
 }
 
 .site-footer__name {

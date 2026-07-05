@@ -31,10 +31,28 @@
           alt="HiFi Arts Co."
         />
 
-        <button class="magnifier" id="magnifierBtn" type="button" aria-label="Search">
-          <img src="assets/magnifying-glass.gif" alt="" aria-hidden="true" />
-        </button>
+        <div class="magnifier-wrap">
+          <button class="magnifier" id="magnifierBtn" type="button" aria-label="Search">
+            <img src="assets/magnifying-glass.gif" alt="" aria-hidden="true" />
+          </button>
+
+          <!-- Just-for-fun speech bubble, revealed on magnifier hover -->
+          <div class="quote" id="quote" hidden>
+            <img
+              id="quoteImg"
+              src="assets/quote-scrolling.gif"
+              alt="I don't really do anything. I'm just here lookin' cute."
+            />
+          </div>
+        </div>
       </div>
+    </header>
+
+    <!-- Yellow nav band: wavy teal top edge, wavy white bottom edge, links inside -->
+    <div class="nav-band">
+      <svg class="nav-band__wave nav-band__wave--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path class="wave-teal" d="M0,0 L1440,0 L1440,34 Q1320,54 1200,34 T960,34 T720,34 T480,34 T240,34 T0,34 Z" />
+      </svg>
 
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list">
@@ -45,21 +63,8 @@
         </ul>
       </nav>
 
-      <!-- Just-for-fun speech bubble, revealed when the magnifier is clicked -->
-      <div class="quote" id="quote" hidden>
-        <img
-          id="quoteImg"
-          src="assets/quote-scrolling.gif"
-          alt="I don't really do anything. I'm just here lookin' cute."
-        />
-      </div>
-    </header>
-
-    <!-- Wave divider: teal -> yellow ribbon -> white (all CSS/SVG) -->
-    <div class="wave wave--header" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
-        <path class="wave-teal" d="M0,0 L1440,0 L1440,55.0 L1440.0,55.0 L1416.0,50.8 L1392.0,46.9 L1368.0,43.2 L1344.0,40.1 L1320.0,37.7 L1296.0,36.0 L1272.0,35.1 L1248.0,35.1 L1224.0,36.0 L1200.0,37.7 L1176.0,40.1 L1152.0,43.2 L1128.0,46.9 L1104.0,50.8 L1080.0,55.0 L1056.0,59.2 L1032.0,63.1 L1008.0,66.8 L984.0,69.9 L960.0,72.3 L936.0,74.0 L912.0,74.9 L888.0,74.9 L864.0,74.0 L840.0,72.3 L816.0,69.9 L792.0,66.8 L768.0,63.1 L744.0,59.2 L720.0,55.0 L696.0,50.8 L672.0,46.9 L648.0,43.2 L624.0,40.1 L600.0,37.7 L576.0,36.0 L552.0,35.1 L528.0,35.1 L504.0,36.0 L480.0,37.7 L456.0,40.1 L432.0,43.2 L408.0,46.9 L384.0,50.8 L360.0,55.0 L336.0,59.2 L312.0,63.1 L288.0,66.8 L264.0,69.9 L240.0,72.3 L216.0,74.0 L192.0,74.9 L168.0,74.9 L144.0,74.0 L120.0,72.3 L96.0,69.9 L72.0,66.8 L48.0,63.1 L24.0,59.2 L0.0,55.0 Z" />
-        <path class="wave-yellow" d="M0.0,55.0 L24.0,59.2 L48.0,63.1 L72.0,66.8 L96.0,69.9 L120.0,72.3 L144.0,74.0 L168.0,74.9 L192.0,74.9 L216.0,74.0 L240.0,72.3 L264.0,69.9 L288.0,66.8 L312.0,63.1 L336.0,59.2 L360.0,55.0 L384.0,50.8 L408.0,46.9 L432.0,43.2 L456.0,40.1 L480.0,37.7 L504.0,36.0 L528.0,35.1 L552.0,35.1 L576.0,36.0 L600.0,37.7 L624.0,40.1 L648.0,43.2 L672.0,46.9 L696.0,50.8 L720.0,55.0 L744.0,59.2 L768.0,63.1 L792.0,66.8 L816.0,69.9 L840.0,72.3 L864.0,74.0 L888.0,74.9 L912.0,74.9 L936.0,74.0 L960.0,72.3 L984.0,69.9 L1008.0,66.8 L1032.0,63.1 L1056.0,59.2 L1080.0,55.0 L1104.0,50.8 L1128.0,46.9 L1152.0,43.2 L1176.0,40.1 L1200.0,37.7 L1224.0,36.0 L1248.0,35.1 L1272.0,35.1 L1296.0,36.0 L1320.0,37.7 L1344.0,40.1 L1368.0,43.2 L1392.0,46.9 L1416.0,50.8 L1440.0,55.0 L1440.0,81.0 L1416.0,76.8 L1392.0,72.9 L1368.0,69.2 L1344.0,66.1 L1320.0,63.7 L1296.0,62.0 L1272.0,61.1 L1248.0,61.1 L1224.0,62.0 L1200.0,63.7 L1176.0,66.1 L1152.0,69.2 L1128.0,72.9 L1104.0,76.8 L1080.0,81.0 L1056.0,85.2 L1032.0,89.1 L1008.0,92.8 L984.0,95.9 L960.0,98.3 L936.0,100.0 L912.0,100.9 L888.0,100.9 L864.0,100.0 L840.0,98.3 L816.0,95.9 L792.0,92.8 L768.0,89.1 L744.0,85.2 L720.0,81.0 L696.0,76.8 L672.0,72.9 L648.0,69.2 L624.0,66.1 L600.0,63.7 L576.0,62.0 L552.0,61.1 L528.0,61.1 L504.0,62.0 L480.0,63.7 L456.0,66.1 L432.0,69.2 L408.0,72.9 L384.0,76.8 L360.0,81.0 L336.0,85.2 L312.0,89.1 L288.0,92.8 L264.0,95.9 L240.0,98.3 L216.0,100.0 L192.0,100.9 L168.0,100.9 L144.0,100.0 L120.0,98.3 L96.0,95.9 L72.0,92.8 L48.0,89.1 L24.0,85.2 L0.0,81.0 Z" />
+      <svg class="nav-band__wave nav-band__wave--bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path class="wave-white" d="M0,60 L1440,60 L1440,26 Q1320,6 1200,26 T960,26 T720,26 T480,26 T240,26 T0,26 Z" />
       </svg>
     </div>
 
@@ -68,36 +73,51 @@
       <section class="section section--about" id="about">
         <div class="container">
           <h2 class="section__title">About Us</h2>
-          <p class="section__body">Placeholder — about the studio.</p>
+          <p class="section__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="section__body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="section__body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          <p class="section__body">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
         </div>
       </section>
 
       <section class="section section--calendar" id="calendar">
         <div class="container">
           <h2 class="section__title">Workshop Calendar</h2>
-          <p class="section__body">Placeholder — upcoming workshops.</p>
+          <p class="section__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <img
+            class="section__image"
+            src="https://placehold.co/1000x500"
+            alt="Workshop calendar placeholder"
+          />
+          <p class="section__body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="section__body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         </div>
       </section>
 
       <section class="section section--contact" id="contact">
         <div class="container">
           <h2 class="section__title">Contact Us</h2>
-          <p class="section__body">Placeholder — how to reach us.</p>
+          <p class="section__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="section__body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="section__body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          <p class="section__body">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
         </div>
       </section>
 
       <section class="section section--mailing" id="mailing">
         <div class="container">
           <h2 class="section__title">Mailing List</h2>
-          <p class="section__body">Placeholder — sign up form.</p>
+          <p class="section__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="section__body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="section__body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         </div>
       </section>
     </main>
 
     <!-- Wave divider: white -> pink footer (all CSS/SVG) -->
     <div class="wave wave--footer" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
-        <path class="wave-pink" d="M0,110 L1440,110 L1440,50.0 L1440.0,50.0 L1416.0,54.6 L1392.0,58.9 L1368.0,62.9 L1344.0,66.3 L1320.0,69.1 L1296.0,70.9 L1272.0,71.9 L1248.0,71.9 L1224.0,70.9 L1200.0,69.1 L1176.0,66.3 L1152.0,62.9 L1128.0,58.9 L1104.0,54.6 L1080.0,50.0 L1056.0,45.4 L1032.0,41.1 L1008.0,37.1 L984.0,33.7 L960.0,30.9 L936.0,29.1 L912.0,28.1 L888.0,28.1 L864.0,29.1 L840.0,30.9 L816.0,33.7 L792.0,37.1 L768.0,41.1 L744.0,45.4 L720.0,50.0 L696.0,54.6 L672.0,58.9 L648.0,62.9 L624.0,66.3 L600.0,69.1 L576.0,70.9 L552.0,71.9 L528.0,71.9 L504.0,70.9 L480.0,69.1 L456.0,66.3 L432.0,62.9 L408.0,58.9 L384.0,54.6 L360.0,50.0 L336.0,45.4 L312.0,41.1 L288.0,37.1 L264.0,33.7 L240.0,30.9 L216.0,29.1 L192.0,28.1 L168.0,28.1 L144.0,29.1 L120.0,30.9 L96.0,33.7 L72.0,37.1 L48.0,41.1 L24.0,45.4 L0.0,50.0 Z" />
+      <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+        <path class="wave-pink" d="M0,130 L1440,130 L1440,58 Q1320,28 1200,58 T960,58 T720,58 T480,58 T240,58 T0,58 Z" />
       </svg>
     </div>
 

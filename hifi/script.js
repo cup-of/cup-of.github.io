@@ -32,8 +32,8 @@ if (cursor) {
 }
 
 // ============ Magnifier speech bubble (just for fun) ============
-// Clicking the magnifier toggles the ostrich's speech bubble. Re-setting the
-// gif src with a cache-busting query restarts its scroll-in animation.
+// Hovering (or focusing) the magnifier reveals the ostrich's speech bubble.
+// Re-setting the gif src with a cache-busting query restarts its scroll-in.
 const magnifier = document.getElementById("magnifierBtn");
 const quote = document.getElementById("quote");
 const quoteImg = document.getElementById("quoteImg");
@@ -41,14 +41,18 @@ const quoteImg = document.getElementById("quoteImg");
 if (magnifier && quote && quoteImg) {
   const QUOTE_GIF = "assets/quote-scrolling.gif";
 
-  magnifier.addEventListener("click", () => {
-    if (!quote.hidden) {
-      quote.hidden = true;
-      return;
-    }
+  const showQuote = () => {
     quote.hidden = false;
     quoteImg.src = `${QUOTE_GIF}?t=${Date.now()}`;
-  });
+  };
+  const hideQuote = () => {
+    quote.hidden = true;
+  };
+
+  magnifier.addEventListener("mouseenter", showQuote);
+  magnifier.addEventListener("focus", showQuote);
+  magnifier.addEventListener("mouseleave", hideQuote);
+  magnifier.addEventListener("blur", hideQuote);
 }
 
 // ============ Footer year ============
