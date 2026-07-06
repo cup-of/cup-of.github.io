@@ -51,8 +51,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 96px;
-  height: 72px;
+  width: 120px;
+  height: 90px;
   background-image: url("assets/cursor-stationary.gif");
   background-size: contain;
   background-repeat: no-repeat;
@@ -217,8 +217,8 @@ a {
    same wave as the letters (see script.js) and stay aligned with the line. */
 .nav__dot {
   align-self: center;
-  width: clamp(5px, 0.6vw, 7px);
-  height: clamp(5px, 0.6vw, 7px);
+  width: clamp(4.5px, 0.54vw, 6.3px);
+  height: clamp(4.5px, 0.54vw, 6.3px);
   margin-left: 0.7rem;
   border-radius: 50%;
   background: #fff;

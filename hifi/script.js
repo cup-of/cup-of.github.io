@@ -39,13 +39,24 @@ const quote = document.getElementById("quote");
 const quoteImg = document.getElementById("quoteImg");
 
 if (magnifier && quote && quoteImg) {
-  const QUOTE_GIF = "assets/quote-scrolling.gif";
+  const SCROLL_GIF = "assets/quote-scrolling.gif";
+  const IDLE_GIF = "assets/quote-stationary.gif";
+  const SCROLL_MS = 1820; // full length of the scroll-in gif (26 frames)
+  let swapTimer;
 
   const showQuote = () => {
     quote.hidden = false;
-    quoteImg.src = `${QUOTE_GIF}?t=${Date.now()}`;
+    // Restart the scroll-in from frame 0 (cache-bust forces a replay).
+    quoteImg.src = `${SCROLL_GIF}?t=${Date.now()}`;
+    // Once it has played through once, switch to the idle gif so the
+    // scroll-in doesn't loop.
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(() => {
+      quoteImg.src = IDLE_GIF;
+    }, SCROLL_MS);
   };
   const hideQuote = () => {
+    clearTimeout(swapTimer);
     quote.hidden = true;
   };
 
