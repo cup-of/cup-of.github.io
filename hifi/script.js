@@ -60,15 +60,19 @@ if (magnifier && quote && quoteImg) {
 // wave to echo the band, and (2) scale it based on cursor proximity on hover
 // (like the macOS dock). No library needed — just distance math + a falloff.
 const navList = document.querySelector(".nav__list");
+const navBand = document.querySelector(".nav-band");
+const navWave = document.querySelector(".nav-band__wave");
 
 if (navList) {
-  const WAVE_AMPLITUDE = 9; // px of vertical travel
-  const WAVE_LENGTH = 210; // px per full wave
+  // The band's SVG wave repeats 6 times across its width, and its quadratic
+  // curves peak at ~0.2 of the wave element's rendered height. We derive the
+  // text wave from those so the letters sit on the wave behind them.
+  const WAVE_PERIODS = 6;
+  const WAVE_AMP_RATIO = 0.2;
   const DOCK_MAX_SCALE = 1.65; // biggest a letter grows under the cursor
   const DOCK_RANGE = 95; // px of influence on either side of the cursor
   const DOCK_LIFT = 7; // px a magnified letter rises
 
-  const k = (2 * Math.PI) / WAVE_LENGTH;
   const chars = [];
 
   document.querySelectorAll(".nav__list a").forEach((link) => {
@@ -90,17 +94,27 @@ if (navList) {
     c.el.style.transform = `translateY(${c.waveY}px) rotate(${c.waveAngle}deg)`;
   };
 
-  // Measure each letter's resting center, then place it on the wave. Rotation
-  // follows the wave's local slope so the text reads as a curved ribbon.
+  // Measure each letter's resting center, then place it on the same wave the
+  // band draws. Rotation follows the wave's local slope so the text reads as a
+  // curved ribbon that tracks the crests and troughs behind it.
   const layout = () => {
+    const band = navBand
+      ? navBand.getBoundingClientRect()
+      : { left: 0, width: window.innerWidth };
+    const width = band.width || window.innerWidth;
+    const waveHeight = navWave ? navWave.getBoundingClientRect().height : 44;
+    const omega = (WAVE_PERIODS * 2 * Math.PI) / width;
+    const amp = WAVE_AMP_RATIO * waveHeight;
+
     chars.forEach((c) => (c.el.style.transform = "none"));
     chars.forEach((c) => {
       const rect = c.el.getBoundingClientRect();
-      c.cx = rect.left + rect.width / 2;
+      c.cx = rect.left + rect.width / 2; // viewport x, used by the dock effect
+      c.wx = c.cx - band.left; // x within the band, used by the wave
     });
     chars.forEach((c) => {
-      c.waveY = WAVE_AMPLITUDE * Math.sin(k * c.cx);
-      const slope = WAVE_AMPLITUDE * k * Math.cos(k * c.cx);
+      c.waveY = -amp * Math.sin(omega * c.wx);
+      const slope = -amp * omega * Math.cos(omega * c.wx);
       c.waveAngle = (Math.atan(slope) * 180) / Math.PI;
       applyWave(c);
     });
