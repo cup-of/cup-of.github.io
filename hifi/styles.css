@@ -89,7 +89,7 @@ a {
   position: absolute;
   top: 325px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(-50% + 15px), -50%);
   width: clamp(320px, 88vw, 70rem);
   aspect-ratio: 2756 / 1295;
   background-image: url("assets/header-sparkles.gif");
@@ -120,7 +120,7 @@ a {
 .header-bar__logo {
   flex: 0 1 auto;
   min-width: 0;
-  width: clamp(200px, 56vw, 42rem);
+  width: clamp(200px, 56vw, 35rem);
   max-width: 100%;
 }
 
