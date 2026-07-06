@@ -3,6 +3,7 @@
   --teal: #63c9bc;
   --yellow: #f9cf4d;
   --salmon: #f2a999;
+  --sky: #9ecdee;
   --cream: #f7efe2;
   --brown: #4a3728;
 
@@ -188,8 +189,9 @@ a {
   fill: var(--teal);
 }
 
-.nav-band .wave-white {
-  fill: #fff;
+/* Matches the first content section so the nav flows into it seamlessly. */
+.nav-band .wave-into-content {
+  fill: var(--salmon);
 }
 
 .nav {
@@ -275,8 +277,9 @@ a {
   height: clamp(72px, 10vw, 140px);
 }
 
+/* Upper half matches the last content section; the crest is the footer color. */
 .wave--footer {
-  background: #fff;
+  background: var(--yellow);
 }
 
 .wave--footer .wave-pink {
@@ -297,17 +300,26 @@ a {
   background-size: clamp(220px, 26vw, 340px);
 }
 
+/* Each section is a solid colored panel with a same-family motif on top,
+   matching the prototype's pink -> yellow -> blue banding. */
 .section--about {
-  background-image: url("assets/content-bg-top.png");
+  background-color: var(--salmon);
+  background-image: url("assets/content-bg-top.png"); /* pink triangles */
 }
 
 .section--calendar {
-  background-image: url("assets/content-bg-mid.png");
+  background-color: var(--yellow);
+  background-image: url("assets/content-bg-bottom.png"); /* yellow rings */
 }
 
-.section--contact,
+.section--contact {
+  background-color: var(--sky);
+  background-image: url("assets/content-bg-mid.png"); /* blue diamonds */
+}
+
 .section--mailing {
-  background-image: url("assets/content-bg-bottom.png");
+  background-color: var(--yellow);
+  background-image: url("assets/content-bg-bottom.png"); /* yellow rings */
 }
 
 .section__title {
