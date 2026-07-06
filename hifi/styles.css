@@ -87,7 +87,7 @@ a {
    sized a touch larger than the logo and centered on it. */
 .site-header__sparkles {
   position: absolute;
-  top: 325px;
+  top: 62%;
   left: 50%;
   transform: translate(calc(-50% + 15px), -50%);
   width: clamp(320px, 88vw, 70rem);
