@@ -368,9 +368,14 @@ a {
 
 /* ============ Tablet & mobile ============ */
 @media (max-width: 900px) {
-  /* Slightly taller header than desktop so the speech bubble has room. */
+  /* Nudge the speech bubble down so the header can stay short while the bubble
+     still clears the top edge. */
+  .quote {
+    transform: translate(-68%, 52%);
+  }
+
   .site-header {
-    padding-block: 3.4rem 2.6rem;
+    padding-block: 2.7rem 1.9rem;
   }
 }
 
