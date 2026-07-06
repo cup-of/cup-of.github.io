@@ -81,7 +81,7 @@ a {
 .site-header {
   position: relative;
   background: var(--teal);
-  padding: clamp(1.5rem, 5.5vw, 4rem) 1rem
+  padding: clamp(1.5rem, 5.5vw, 4rem) 0
     clamp(0.5rem, calc(5.5vw - 1rem), 3rem);
 }
 
