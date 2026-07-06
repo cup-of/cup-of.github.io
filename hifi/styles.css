@@ -361,3 +361,25 @@ a {
   font-weight: 700;
   margin: 0;
 }
+
+/* ============ Mobile ============ */
+@media (max-width: 600px) {
+  /* Shrink the nav (font + spacing scale with the viewport) so all four
+     links stay on a single line instead of wrapping. */
+  .nav-band {
+    padding-inline: 0.5rem;
+  }
+
+  .nav__list {
+    gap: 0.25rem 0.35rem;
+  }
+
+  .nav__list a {
+    font-size: clamp(0.6rem, 3vw, 0.85rem);
+    letter-spacing: 0.01em;
+  }
+
+  .nav__dot {
+    margin-left: 0.35rem;
+  }
+}
