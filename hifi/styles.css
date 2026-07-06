@@ -236,6 +236,7 @@ a {
 @media (max-width: 640px) {
   .header-bar {
     gap: 0.5rem;
+    justify-content: space-between;
   }
 
   .header-bar__logo {
