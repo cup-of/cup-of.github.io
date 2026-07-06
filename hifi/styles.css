@@ -2,9 +2,8 @@
 :root {
   --teal: #63c9bc;
   --yellow: #f9cf4d;
-  --yellow-tint: #fdeaa6;
   --salmon: #f2a999;
-  --sky-pale: #d8eaf8;
+  --sky: #9ecdee;
   --cream: #f7efe2;
   --brown: #4a3728;
 
@@ -297,37 +296,32 @@ a {
 
 .section {
   padding-block: clamp(3.5rem, 7vw, 6rem);
-}
-
-/* Each section is a solid colored panel with a single row of large shapes on
-   top, matching the prototype's pink triangles -> yellow bars -> blue circles.
-   The SVG patterns tile horizontally and scale to fill the section height. */
-.section--about {
-  background-color: var(--salmon);
-  background-image: url("assets/content-triangles.svg");
+  /* Motif assets tile as a single horizontal row and scale to fill the
+     section height, so each panel shows one row of large shapes. */
   background-repeat: repeat-x;
   background-position: center;
   background-size: auto 100%;
+}
+
+/* White band separating each colored panel, matching the prototype. */
+.section:not(:last-child) {
+  border-bottom: clamp(16px, 2.4vw, 30px) solid #fff;
+}
+
+.section--about {
+  background-color: var(--salmon);
+  background-image: url("assets/content-bg-top.png"); /* pink triangles */
 }
 
 .section--calendar,
 .section--mailing {
-  --bar-gap: clamp(120px, 20vw, 260px);
-  --bar-width: clamp(36px, 5vw, 72px);
   background-color: var(--yellow);
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--yellow) 0 var(--bar-gap),
-    var(--yellow-tint) var(--bar-gap) calc(var(--bar-gap) + var(--bar-width))
-  );
+  background-image: url("assets/content-bg-bottom.png"); /* yellow rings */
 }
 
 .section--contact {
-  background-color: var(--sky-pale);
-  background-image: url("assets/content-circles.svg");
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: auto 100%;
+  background-color: var(--sky);
+  background-image: url("assets/content-bg-mid.png"); /* blue diamonds */
 }
 
 .section__title {
