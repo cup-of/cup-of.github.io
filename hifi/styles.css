@@ -245,6 +245,12 @@ a {
 }
 
 @media (max-width: 640px) {
+  /* Let the ostrich sit flush to the left edge */
+  .site-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .header-bar {
     gap: 0.5rem;
     justify-content: space-between;
@@ -252,6 +258,11 @@ a {
 
   .header-bar__logo {
     width: clamp(140px, 52vw, 20rem);
+  }
+
+  /* Pull the search icon in from the right edge */
+  .magnifier-wrap {
+    margin-right: clamp(0.75rem, 5vw, 2rem);
   }
 
   .nav__list a {
