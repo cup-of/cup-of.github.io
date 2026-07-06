@@ -81,8 +81,12 @@ a {
 .site-header {
   position: relative;
   background: var(--teal);
-  padding: clamp(1.5rem, 5.5vw, 4rem) 0
-    clamp(0.5rem, calc(5.5vw - 1rem), 3rem);
+  /* Minimums keep enough headroom on small screens for the magnifier's speech
+     bubble (fixed height) to sit above it without clipping. Desktop is capped
+     at the same 4rem/3rem as before, so it's unchanged. Bottom stays 1rem
+     shorter than top. */
+  padding: clamp(3.75rem, 5.5vw, 4rem) 0
+    clamp(2.75rem, calc(5.5vw - 1rem), 3rem);
 }
 
 /* Sparkles frame the logo rather than filling the whole header:
