@@ -217,8 +217,8 @@ a {
    same wave as the letters (see script.js) and stay aligned with the line. */
 .nav__dot {
   align-self: center;
-  width: clamp(7px, 0.9vw, 10px);
-  height: clamp(7px, 0.9vw, 10px);
+  width: clamp(5px, 0.6vw, 7px);
+  height: clamp(5px, 0.6vw, 7px);
   margin-left: 0.7rem;
   border-radius: 50%;
   background: #fff;
