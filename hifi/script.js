@@ -74,11 +74,29 @@ const navList = document.querySelector(".nav__list");
 const navBand = document.querySelector(".nav-band");
 const navWave = document.querySelector(".nav-band__wave");
 
+const waveTopPath = document.querySelector(".nav-band__wave--top path");
+const waveBottomPath = document.querySelector(".nav-band__wave--bottom path");
+
+// Rebuild a band wave path with a given number of humps so the band can carry
+// fewer, gentler waves on narrow screens (and match the text wave exactly).
+const buildWavePath = (periods, isTop) => {
+  const W = 1440;
+  const MID = 40;
+  const AMP = 32;
+  const step = W / (2 * periods);
+  const start = isTop ? `M0,0 L${W},0 L${W},${MID}` : `M0,80 L${W},80 L${W},${MID}`;
+  let d = `${start} Q${W - step / 2},${MID + AMP} ${W - step},${MID}`;
+  for (let x = W - 2 * step; x >= -0.001; x -= step) {
+    d += ` T${Math.round(x)},${MID}`;
+  }
+  return `${d} Z`;
+};
+
 if (navList) {
-  // The band's SVG wave repeats 6 times across its width, and its quadratic
-  // curves peak at ~0.2 of the wave element's rendered height. We derive the
-  // text wave from those so the letters sit on the wave behind them.
-  const WAVE_PERIODS = 6;
+  // Keep a roughly constant wavelength instead of a fixed number of humps, so
+  // narrow screens get fewer, gentler waves. The band SVG and the per-letter
+  // text wave are both derived from this, so they always stay in sync.
+  const TARGET_WAVELENGTH = 230; // px per wave
   const WAVE_AMP_RATIO = 0.2;
   const DOCK_MAX_SCALE = 1.65; // biggest a letter grows under the cursor
   const DOCK_RANGE = 95; // px of influence on either side of the cursor
@@ -124,8 +142,13 @@ if (navList) {
       ? navBand.getBoundingClientRect()
       : { left: 0, width: window.innerWidth };
     const width = band.width || window.innerWidth;
+    const periods = Math.max(2, Math.round(width / TARGET_WAVELENGTH));
+    if (waveTopPath) waveTopPath.setAttribute("d", buildWavePath(periods, true));
+    if (waveBottomPath) {
+      waveBottomPath.setAttribute("d", buildWavePath(periods, false));
+    }
     const waveHeight = navWave ? navWave.getBoundingClientRect().height : 44;
-    const omega = (WAVE_PERIODS * 2 * Math.PI) / width;
+    const omega = (periods * 2 * Math.PI) / width;
     const amp = WAVE_AMP_RATIO * waveHeight;
 
     chars.forEach((c) => (c.el.style.transform = "none"));
