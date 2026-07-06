@@ -172,7 +172,7 @@ a {
   position: absolute;
   left: 0;
   width: 100%;
-  height: clamp(22px, 3.5vw, 44px);
+  height: clamp(34px, 5.5vw, 72px);
   display: block;
 }
 
@@ -216,14 +216,17 @@ a {
 .nav__list li:not(:last-child)::after {
   content: "\00B7";
   margin-left: 0.7rem;
-  color: var(--brown);
-  opacity: 0.65;
+  color: #fff;
+  opacity: 0.85;
 }
 
 .nav__list a {
-  color: var(--brown);
-  font-weight: 700;
-  font-size: clamp(0.85rem, 1.7vw, 1.15rem);
+  color: #fff;
+  font-family: "Fredoka", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.9vw, 1.35rem);
+  /* White on yellow is low contrast; soft shadow keeps it legible. */
+  text-shadow: 0 1px 2px rgba(74, 55, 40, 0.35);
 }
 
 .nav__list a:hover {
