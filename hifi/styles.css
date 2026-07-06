@@ -254,19 +254,6 @@ a {
   text-decoration: none;
 }
 
-@media (max-width: 640px) {
-  /* Ostrich pinned to the far left edge (cancels the header's side padding).
-     Everything else is left at defaults to be positioned manually. */
-  .header-bar__ostrich {
-    margin-left: -1rem;
-    margin-right: auto;
-  }
-
-  .nav__list a {
-    font-size: 0.85rem;
-  }
-}
-
 /* ============ Wave dividers ============ */
 .wave {
   line-height: 0;
