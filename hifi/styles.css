@@ -245,24 +245,11 @@ a {
 }
 
 @media (max-width: 640px) {
-  /* Let the ostrich sit flush to the left edge */
-  .site-header {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .header-bar {
-    gap: 0.5rem;
-    justify-content: space-between;
-  }
-
-  .header-bar__logo {
-    width: clamp(140px, 52vw, 20rem);
-  }
-
-  /* Pull the search icon in from the right edge */
-  .magnifier-wrap {
-    margin-right: clamp(0.75rem, 5vw, 2rem);
+  /* Ostrich pinned to the far left edge (cancels the header's side padding).
+     Everything else is left at defaults to be positioned manually. */
+  .header-bar__ostrich {
+    margin-left: -1rem;
+    margin-right: auto;
   }
 
   .nav__list a {
