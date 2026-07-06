@@ -86,8 +86,19 @@ if (navList) {
       span.setAttribute("aria-hidden", "true");
       span.textContent = ch === " " ? "\u00A0" : ch;
       link.appendChild(span);
-      chars.push({ el: span, cx: 0, waveY: 0, waveAngle: 0 });
+      chars.push({ el: span, cx: 0, wx: 0, waveY: 0, waveAngle: 0, isDot: false });
     }
+  });
+
+  // Separator dots as real elements so they ride the wave with the letters.
+  const items = [...navList.querySelectorAll("li")];
+  items.forEach((li, i) => {
+    if (i === items.length - 1) return;
+    const dot = document.createElement("span");
+    dot.className = "nav__dot";
+    dot.setAttribute("aria-hidden", "true");
+    li.appendChild(dot);
+    chars.push({ el: dot, cx: 0, wx: 0, waveY: 0, waveAngle: 0, isDot: true });
   });
 
   const applyWave = (c) => {
@@ -122,6 +133,10 @@ if (navList) {
 
   const magnify = (pointerX) => {
     chars.forEach((c) => {
+      if (c.isDot) {
+        applyWave(c);
+        return;
+      }
       const t = Math.max(0, 1 - Math.abs(pointerX - c.cx) / DOCK_RANGE);
       const eased = t * t * (3 - 2 * t); // smoothstep falloff
       const scale = 1 + (DOCK_MAX_SCALE - 1) * eased;

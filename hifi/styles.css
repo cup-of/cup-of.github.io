@@ -213,10 +213,10 @@ a {
   align-items: center;
 }
 
-/* Round separator dot, vertically centered in the item (via the li's
-   align-items: center) and larger than the middle-dot glyph for legibility. */
-.nav__list li:not(:last-child)::after {
-  content: "";
+/* Round separator dot. Inserted by JS as a real element so it can ride the
+   same wave as the letters (see script.js) and stay aligned with the line. */
+.nav__dot {
+  align-self: center;
   width: clamp(7px, 0.9vw, 10px);
   height: clamp(7px, 0.9vw, 10px);
   margin-left: 0.7rem;
