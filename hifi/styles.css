@@ -81,7 +81,7 @@ a {
 .site-header {
   position: relative;
   background: var(--teal);
-  padding: clamp(1.5rem, 5.5vw, 4rem) 1rem clamp(1.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 5.5vw, 4rem) 1rem;
 }
 
 /* Sparkles frame the logo rather than filling the whole header:
