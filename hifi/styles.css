@@ -370,7 +370,7 @@ a {
 @media (max-width: 900px) {
   /* Slightly taller header than desktop so the speech bubble has room. */
   .site-header {
-    padding-block: 4.25rem 3.25rem;
+    padding-block: 3.4rem 2.6rem;
   }
 }
 
